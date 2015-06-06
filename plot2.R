@@ -11,12 +11,13 @@ close(datafile)
 df$DateTime <- with(df, paste0(Date, " ",Time))
 df$DateTime2 <- as.POSIXct(strptime(df$DateTime, "%d/%m/%Y %H:%M:%S"))
 
+# Set up PNG
+png("plot2.png", width=480, height=480)
+
 # Make plot
 plot(df$DateTime2, df$Global_active_power, type="l",
      xlab = "",
      main = "",
      ylab = "Global Active Power (kilowatts)")
 
-# Save plot as PNG, 480 x 480 pixels
-dev.copy(png,'plot2.png')
 dev.off()
